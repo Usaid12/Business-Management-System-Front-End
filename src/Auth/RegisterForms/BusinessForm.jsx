@@ -35,9 +35,13 @@ const BusinessForm = () => {
   console.log(errors);
 
   return (
-    <Form className="theme-form" onSubmit={handleSubmit}>
+    <Form className="theme-form" onSubmit={handleSubmit} >
+      <div className="container">
+      
       <H4>{"SIGNUP AS BUSINESS"}</H4>
       <P>{"Please Enter The Following Information To Signup As a Business"}</P>
+      <div className="row">
+        <div className="col">
       <FormGroup>
         <Label className="col-form-label">{Username}</Label>
         <Input
@@ -49,6 +53,8 @@ const BusinessForm = () => {
           required={true}
         />
       </FormGroup>
+      </div>
+      <div className="col">
       <FormGroup className="position-relative">
         <Label className="col-form-label">{EmailAddress}</Label>
         <Input
@@ -60,6 +66,10 @@ const BusinessForm = () => {
           required={true}
         />
       </FormGroup>
+      </div>
+      </div>
+      <div className="row">
+        <div className="col">
       <FormGroup className="position-relative">
         <Label className="col-form-label">{Password}</Label>
         <Input
@@ -73,6 +83,9 @@ const BusinessForm = () => {
           required={true}
         />
       </FormGroup>
+      </div>
+      
+      <div className="col">
       <FormGroup className="position-relative">
         <Label className="col-form-label">{ConfirmPassword}</Label>
         <Input
@@ -85,7 +98,14 @@ const BusinessForm = () => {
           onBlur={handleBlur}
           required={true}
         />
+        
       </FormGroup>
+      </div>
+      </div>
+      
+     
+      <div className="row">
+        <div className="col">
       <FormGroup className="position-relative">
         <Label className="col-form-label">{Gender}</Label>
         <Input
@@ -97,6 +117,8 @@ const BusinessForm = () => {
           required={true}
         />
       </FormGroup>
+      </div>
+      <div className="col">
       <FormGroup className="position-relative">
         <Label className="col-form-label">{Phone}</Label>
         <Input
@@ -109,6 +131,9 @@ const BusinessForm = () => {
           required={true}
         />
       </FormGroup>
+      </div>
+      </div>
+     
       <FormGroup className="position-relative">
         <Label className="col-form-label">{Description}</Label>
         <Input
@@ -120,12 +145,15 @@ const BusinessForm = () => {
           required={true}
         />
       </FormGroup>
+     
 
-      <FormGroup className="w-100 d-flex justify-content-center">
-        <button className="btn btn-primary " type="submit">
+       <FormGroup className="d-flex justify-content-center">
+        <button className="btn btn-primary py-3 fs-6" type="submit">
           Signup As Business
         </button>
       </FormGroup>
+      </div>
+   
     </Form>
   );
 };
