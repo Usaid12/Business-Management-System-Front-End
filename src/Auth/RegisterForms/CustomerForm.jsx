@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useState } from 'react';
 import { Form, FormGroup, Input, Label } from "reactstrap";
 import { H4, P } from "../../AbstractElements";
 import { useFormik } from "formik";
@@ -21,6 +21,9 @@ const initialValues = {
 
 
 const CustomerForm = () => {
+    
+  const [gender, setGender] = useState();
+
     const { values, errors, handleChange, handleBlur, handleSubmit } = useFormik({
         initialValues: initialValues,
         validationSchema: CustomerSchema,
@@ -80,15 +83,14 @@ const CustomerForm = () => {
         />
       </FormGroup>
       <FormGroup className="position-relative">
-        <Label className="col-form-label">{Gender}</Label>
-        <Input
-          className="form-control"
-          name="gender"
-          value={values.gender}
-          onChange={handleChange}
+      <Label className="col-form-label">{Gender}</Label>
+          <select  value={gender}
           onBlur={handleBlur}
-          required={true}
-        />
+          required={true} className="form-control" name={Gender} onChange={e=>setGender(e.target.value)}>
+          <option>Gender</option>
+          <option>Male</option>
+          <option>Female</option>
+          </select>
       </FormGroup>
 
       <FormGroup className="w-100 d-flex justify-content-center">

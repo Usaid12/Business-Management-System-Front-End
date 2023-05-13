@@ -11,13 +11,15 @@ const initialValues = {
   password: "",
 };
 const LoginTab = () => {
-  const { values, errors, handleChange, handleBlur, handleSubmit } = useFormik({
+  const { values, errors, touched, handleChange, handleBlur, handleSubmit } = useFormik({
     initialValues: initialValues,
     validationSchema: LoginSchema,
     onSubmit: (values) => {
       console.log(values);
     },
   });
+
+  console.log(errors);
 
   return (
     <Form className="theme-form" onSubmit={handleSubmit}>
@@ -26,13 +28,13 @@ const LoginTab = () => {
       <FormGroup>
         <Label className="col-form-label">{EmailAddress}</Label>
         <Input
-          className="form-control"
+        className="form-control"
           name="email"
+          id="email"
+          type="email"
           value={values.email}
           onChange={handleChange}
           onBlur={handleBlur}
-          required={true}
-          
         />
       </FormGroup>
       <FormGroup className="position-relative">
