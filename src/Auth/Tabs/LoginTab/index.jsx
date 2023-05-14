@@ -1,7 +1,11 @@
 import React from "react";
-import { Dropdown, Form, FormGroup, Input, Label } from "reactstrap";
+import {Form, FormGroup, Input, Label } from "reactstrap";
 import { H4, H6, P } from "../../../AbstractElements";
-import { EmailAddress, Password, TextBackgroundUtilities } from "../../../Constant";
+import {
+  EmailAddress,
+  Password,
+  TextBackgroundUtilities,
+} from "../../../Constant";
 import { useFormik } from "formik";
 import { LoginSchema } from "../../../AuthScehma/LoginSchema";
 import { Link } from "react-router-dom";
@@ -11,13 +15,14 @@ const initialValues = {
   password: "",
 };
 const LoginTab = () => {
-  const { values, errors, touched, handleChange, handleBlur, handleSubmit } = useFormik({
-    initialValues: initialValues,
-    validationSchema: LoginSchema,
-    onSubmit: (values) => {
-      console.log(values);
-    },
-  });
+  const { values, errors, touched, handleChange, handleBlur, handleSubmit } =
+    useFormik({
+      initialValues: initialValues,
+      validationSchema: LoginSchema,
+      onSubmit: (values) => {
+        console.log(values);
+      },
+    });
 
   console.log(errors);
 
@@ -28,7 +33,7 @@ const LoginTab = () => {
       <FormGroup>
         <Label className="col-form-label">{EmailAddress}</Label>
         <Input
-        className="form-control"
+          className="form-control"
           name="email"
           id="email"
           type="email"
@@ -36,6 +41,9 @@ const LoginTab = () => {
           onChange={handleChange}
           onBlur={handleBlur}
         />
+        {errors.email && touched.email ? (
+          <p className="form-error text-danger">{errors.email}</p>
+        ) : null}
       </FormGroup>
       <FormGroup className="position-relative">
         <Label className="col-form-label">{Password}</Label>
@@ -48,6 +56,9 @@ const LoginTab = () => {
           onBlur={handleBlur}
           required={TextBackgroundUtilities}
         />
+        {errors.password && touched.password ? (
+          <p className="form-error text-danger">{errors.password}</p>
+        ) : null}
       </FormGroup>
 
       <FormGroup className="w-100 d-flex justify-content-center">
@@ -55,8 +66,6 @@ const LoginTab = () => {
           Login
         </button>
       </FormGroup>
-    
-   
 
       <div className="login-social-title">
         <H6>{`Or Sign up as`}</H6>

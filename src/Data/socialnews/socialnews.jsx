@@ -1,6 +1,6 @@
 import { Instagram, Likes, Linkedins, Posts } from "../../Constant";
 import { Facebooks, Twitters } from "../../Constant";
-import { dynamicImage } from "../../Services";
+// import { dynamicImage } from "../../Services";
 
 export const socialnews = [
   {

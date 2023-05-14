@@ -1,36 +1,31 @@
-import React, { useState } from 'react';
+import React from "react";
 import { Form, FormGroup, Input, Label } from "reactstrap";
 import { H4, P } from "../../AbstractElements";
 import { useFormik } from "formik";
-import {CustomerSchema} from "../../AuthScehma/CustomerSchema"
-import { Gender } from '../../Constant';
-import { Username } from '../../Constant';
-import { EmailAddress } from '../../Constant';
-import { Password } from '../../Constant';
-import { ConfirmPassword } from '../../Constant';
-
-
+import { CustomerSchema } from "../../AuthScehma/CustomerSchema";
+import { Gender } from "../../Constant";
+import { Username } from "../../Constant";
+import { EmailAddress } from "../../Constant";
+import { Password } from "../../Constant";
+import { ConfirmPassword } from "../../Constant";
 
 const initialValues = {
-  username:"",
-    email:"",
-    password:"",
-    confirmPassword:"",
-    gender:""
-}
-
+  username: "",
+  email: "",
+  password: "",
+  confirmPassword: "",
+  gender: "",
+};
 
 const CustomerForm = () => {
-    
-  const [gender, setGender] = useState();
-
-    const { values, errors, handleChange, handleBlur, handleSubmit } = useFormik({
-        initialValues: initialValues,
-        validationSchema: CustomerSchema,
-        onSubmit: (values) => {
-          console.log(values);
-        },
-      });
+  const { values, errors, handleChange, handleBlur, handleSubmit, touched } =
+    useFormik({
+      initialValues: initialValues,
+      validationSchema: CustomerSchema,
+      onSubmit: (values) => {
+        console.log(values);
+      },
+    });
 
   return (
     <Form className="theme-form" onSubmit={handleSubmit}>
@@ -44,8 +39,10 @@ const CustomerForm = () => {
           value={values.username}
           onChange={handleChange}
           onBlur={handleBlur}
-          required={true}
         />
+        {errors.username && touched.username ? (
+          <p className="form-error text-danger">{errors.username}</p>
+        ) : null}
       </FormGroup>
       <FormGroup className="position-relative">
         <Label className="col-form-label">{EmailAddress}</Label>
@@ -55,8 +52,10 @@ const CustomerForm = () => {
           value={values.email}
           onChange={handleChange}
           onBlur={handleBlur}
-          required={true}
         />
+        {errors.email && touched.email ? (
+          <p className="form-error text-danger">{errors.email}</p>
+        ) : null}
       </FormGroup>
       <FormGroup className="position-relative">
         <Label className="col-form-label">{Password}</Label>
@@ -67,8 +66,10 @@ const CustomerForm = () => {
           type="password"
           onChange={handleChange}
           onBlur={handleBlur}
-          required={true}
         />
+        {errors.password && touched.password ? (
+          <p className="form-error text-danger">{errors.password}</p>
+        ) : null}
       </FormGroup>
       <FormGroup className="position-relative">
         <Label className="col-form-label">{ConfirmPassword}</Label>
@@ -79,18 +80,27 @@ const CustomerForm = () => {
           type="password"
           onChange={handleChange}
           onBlur={handleBlur}
-          required={true}
         />
+        {errors.confirmPassword && touched.confirmPassword ? (
+          <p className="form-error text-danger">{errors.confirmPassword}</p>
+        ) : null}
       </FormGroup>
       <FormGroup className="position-relative">
-      <Label className="col-form-label">{Gender}</Label>
-          <select  value={gender}
+        <Label className="col-form-label">{Gender}</Label>
+        <select
+          value={values.gender}
           onBlur={handleBlur}
-          required={true} className="form-control" name={Gender} onChange={e=>setGender(e.target.value)}>
-          <option>Gender</option>
-          <option>Male</option>
-          <option>Female</option>
-          </select>
+          className="form-control"
+          name="gender"
+          onChange={handleChange}
+        >
+          <option value="">Select gender</option>
+          <option value="Male">Male</option>
+          <option value="Female">Female</option>
+        </select>
+        {errors.gender && touched.gender ? (
+          <p className="form-error text-danger">{errors.gender}</p>
+        ) : null}
       </FormGroup>
 
       <FormGroup className="w-100 d-flex justify-content-center">
@@ -98,8 +108,8 @@ const CustomerForm = () => {
           Signup as Customer
         </button>
       </FormGroup>
-      </Form>
-  )
-}
+    </Form>
+  );
+};
 
 export default CustomerForm;
