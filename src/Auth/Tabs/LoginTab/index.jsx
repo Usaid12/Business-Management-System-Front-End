@@ -73,12 +73,10 @@ const LoginTab = () => {
       <div className=" d-flex flex-column gap-2 align-items-center">
         <div className="d-flex align-items-center">
           <Link to={`/tivo/customer-register`}>
-            <button className=" btn btn-primary">Signup as Customer </button>
+            <button className=" btn btn-primary">Signup</button>
           </Link>
         </div>
-        <Link to={`/tivo/business-register`}>
-          <button className="btn btn-primary">Signup as Business</button>
-        </Link>
+       
       </div>
     </Form>
   );

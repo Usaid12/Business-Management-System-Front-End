@@ -1,7 +1,8 @@
-import React from "react";
+
 import { Form, FormGroup, Input, Label } from "reactstrap";
 import { H4, P } from "../../AbstractElements";
 import { useFormik } from "formik";
+
 
 import { RegisterSchema } from "../../AuthScehma/RegisterSchema";
 import {
@@ -25,6 +26,7 @@ const initialValues = {
 };
 
 const BusinessForm = () => {
+
   const { values, errors, handleChange, handleBlur, handleSubmit, touched } =
     useFormik({
       initialValues: initialValues,
@@ -34,6 +36,8 @@ const BusinessForm = () => {
       },
     });
   console.log(values.gender);
+ 
+
 
   return (
     <Form className="theme-form" onSubmit={handleSubmit}>

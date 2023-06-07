@@ -18,12 +18,12 @@ export const RegisterSchema = Yup.object({
   gender: Yup.string()
     .oneOf(["Male", "Female"])
     .required("Please choose a gender"),
-  phone: Yup.string("Invalid Number")
+  phoneNumber: Yup.string("Invalid Number")
     .matches(
       /^[0-9]{11}$/,
-      "Phone number must be exactly 11 digits and contain only numbers"
+      "phoneNumber number must be exactly 11 digits and contain only numbers"
     )
-    .required("Phone Number is required field"),
+    .required("phoneNumber Number is required field"),
   businessDescription: Yup.string()
     .min(5)
     .max(50)

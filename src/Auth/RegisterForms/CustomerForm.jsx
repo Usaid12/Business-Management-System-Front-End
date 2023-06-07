@@ -1,47 +1,87 @@
 import React from "react";
+import axios from "axios";
 import { Form, FormGroup, Input, Label } from "reactstrap";
 import { H4, P } from "../../AbstractElements";
 import { useFormik } from "formik";
 import { CustomerSchema } from "../../AuthScehma/CustomerSchema";
-import { Gender } from "../../Constant";
-import { Username } from "../../Constant";
+import { FirstName, Gender, LastName, phoneNumber } from "../../Constant";
 import { EmailAddress } from "../../Constant";
 import { Password } from "../../Constant";
 import { ConfirmPassword } from "../../Constant";
+import { useNavigate } from "react-router";
 
 const initialValues = {
-  username: "",
+  firstName: "",
+  lastName: "",
   email: "",
   password: "",
   confirmPassword: "",
   gender: "",
+  phoneNumber: "",
 };
 
 const CustomerForm = () => {
+  const navigate=useNavigate()
   const { values, errors, handleChange, handleBlur, handleSubmit, touched } =
     useFormik({
       initialValues: initialValues,
       validationSchema: CustomerSchema,
-      onSubmit: (values) => {
-        console.log(values);
+      onSubmit: () => {
+        handleRegister();
       },
     });
+  const handleRegister = async () => {
+    const url = "http://localhost:5000/api/auth/register";
+    try {
+      const data = await axios.post(url, {
+        firstName: values.firstName,
+        lastName: values.lastName,
+        email: values.email,
+        password: values.password,
+        gender: values.gender,
+        phoneNumber: values.phoneNumber,
+        role: "customer",
+      });
+      if (data.status === 201) {
+        localStorage.setItem("access_token",data.data.tokenst);
+        navigate('/tivo/dashboard/default')
+
+      }
+
+
+    } catch (error) {
+      console.log(error);
+    }
+  };
 
   return (
     <Form className="theme-form" onSubmit={handleSubmit}>
       <H4>{"SIGNUP AS CUSTOMER"}</H4>
       <P>{"Please Enter The Following Information To Signup As a Customer"}</P>
       <FormGroup>
-        <Label className="col-form-label">{Username}</Label>
+        <Label className="col-form-label">{FirstName}</Label>
         <Input
           className="form-control"
-          name="username"
-          value={values.username}
+          name="firstName"
+          value={values.firstName}
           onChange={handleChange}
           onBlur={handleBlur}
         />
-        {errors.username && touched.username ? (
-          <p className="form-error text-danger">{errors.username}</p>
+        {errors.firstName && touched.firstName ? (
+          <p className="form-error text-danger">{errors.firstName}</p>
+        ) : null}
+      </FormGroup>
+      <FormGroup>
+        <Label className="col-form-label">{LastName}</Label>
+        <Input
+          className="form-control"
+          name="lastName"
+          value={values.lastName}
+          onChange={handleChange}
+          onBlur={handleBlur}
+        />
+        {errors.lastName && touched.lastName ? (
+          <p className="form-error text-danger">{errors.lastName}</p>
         ) : null}
       </FormGroup>
       <FormGroup className="position-relative">
@@ -95,15 +135,29 @@ const CustomerForm = () => {
           onChange={handleChange}
         >
           <option value="">Select gender</option>
-          <option value="Male">Male</option>
-          <option value="Female">Female</option>
+          <option value="male">male</option>
+          <option value="female">female</option>
         </select>
         {errors.gender && touched.gender ? (
           <p className="form-error text-danger">{errors.gender}</p>
         ) : null}
       </FormGroup>
+      <FormGroup className="position-relative">
+        <Label className="col-form-label">{phoneNumber}</Label>
+        <Input
+          className="form-control"
+          name="phoneNumber"
+          value={values.phoneNumber}
+          type="tel"
+          onChange={handleChange}
+          onBlur={handleBlur}
+        />
+        {errors.phoneNumber && touched.phoneNumber ? (
+          <p className="form-error text-danger">{errors.phoneNumber}</p>
+        ) : null}
+      </FormGroup>
 
-      <FormGroup className="w-100 d-flex justify-content-center">
+      <FormGroup className=" d-flex justify-content-center">
         <button className="btn btn-primary " type="submit">
           Signup as Customer
         </button>

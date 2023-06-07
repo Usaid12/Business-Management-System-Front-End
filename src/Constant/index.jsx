@@ -12,6 +12,7 @@ export const NewProduct = "New Product";
 export const Location = "Location";
 export const RiskFactor = "Risk Factor";
 export const BestSeller = "Best Seller";
+export const phoneNumber="phoneNumber"
 
 export const Earnings = "Earnings";
 export const Products = "Products";
