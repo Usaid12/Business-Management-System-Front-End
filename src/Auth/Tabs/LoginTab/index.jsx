@@ -1,6 +1,8 @@
 import React from "react";
 import { Form, FormGroup, Input, Label } from "reactstrap";
 import { H4, H6, P } from "../../../AbstractElements";
+import axios from "axios";
+import { useNavigate } from "react-router";
 import {
   EmailAddress,
   Password,
@@ -15,16 +17,32 @@ const initialValues = {
   password: "",
 };
 const LoginTab = () => {
+  const navigate = useNavigate()
   const { values, errors, touched, handleChange, handleBlur, handleSubmit } =
     useFormik({
       initialValues: initialValues,
       validationSchema: LoginSchema,
-      onSubmit: (values) => {
-        console.log(values);
+      onSubmit: () => {
+       handleLogin();
       },
     });
 
-  console.log(errors);
+  const handleLogin = async () =>{
+    const url = "http://localhost:5000/api/auth/login";
+    try {
+      const data = await axios.post(url,{
+        email : values.email,
+        password : values.password
+      });
+      if (data.status === 201) {
+        localStorage.setItem("access_token",data.data.tokenst);
+        navigate('/tivo/dashboard/default')
+      }
+    } catch (error) {
+      console.log(error);
+    }
+  };
+  
 
   return (
     <Form className="theme-form" onSubmit={handleSubmit}>
