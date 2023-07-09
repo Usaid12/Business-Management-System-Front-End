@@ -29,6 +29,7 @@ import {
   Zap,
   ShoppingBag,
 } from "react-feather";
+import { FaBusinessTime, FaCaretRight, FaList } from "react-icons/fa";
 
 export const MENU = [
   {
@@ -54,6 +55,42 @@ export const MENU = [
         ],
       },
       {
+        title: "Business",
+        icon: <FaBusinessTime />,
+        class: "lan-3",
+        menu: [
+          {
+            title: "Register Business",
+            url: `${process.env.PUBLIC_URL}/dashboard/business-register`,
+          },
+          {
+            title: "Business List",
+            icon: <FaList />,
+            url: `${process.env.PUBLIC_URL}/dashboard/business-list`,
+          },
+        ],
+      },
+      {
+        title: "Category",
+        icon: <FaCaretRight />,
+        class: "lan-3",
+        menu: [
+          {
+            title: "Create Category",
+            url: `${process.env.PUBLIC_URL}/dashboard/create-category`,
+          },
+          {
+            title: "Create SubCategory",
+            url: `${process.env.PUBLIC_URL}/dashboard/create-subcategory`,
+          },
+          {
+            title: "Category List",
+            url: `${process.env.PUBLIC_URL}/dashboard/category-list`,
+          },
+        ],
+      },
+
+      {
         title: "Widgets",
         icon: <Airplay />,
         class: "lan-6",
@@ -70,6 +107,7 @@ export const MENU = [
           },
         ],
       },
+    
       {
         title: "Ecommerce",
         icon: <ShoppingBag />,
@@ -982,7 +1020,7 @@ export const SEARCHMENU = [
             url: `${process.env.PUBLIC_URL}/widgets/general`,
             type: "link",
             title: "General",
-            bookmark:true,
+            bookmark: true,
           },
           {
             url: `${process.env.PUBLIC_URL}/widgets/chart`,
@@ -1000,7 +1038,7 @@ export const SEARCHMENU = [
             url: `${process.env.PUBLIC_URL}/ecommerce/product`,
             title: "Product",
             type: "link",
-            bookmark:true,
+            bookmark: true,
           },
           {
             url: `${process.env.PUBLIC_URL}/ecommerce/product-page/1`,
@@ -1187,7 +1225,7 @@ export const SEARCHMENU = [
               {
                 title: "Datepicker",
                 type: "link",
-            bookmark:true,
+                bookmark: true,
                 url: `${process.env.PUBLIC_URL}/form-widget/datepicker`,
               },
               {
@@ -1518,8 +1556,7 @@ export const SEARCHMENU = [
             url: `${process.env.PUBLIC_URL}/charts/apexCharts`,
             type: "link",
             title: "Apex Chart",
-            bookmark:true,
-
+            bookmark: true,
           },
           {
             url: `${process.env.PUBLIC_URL}/charts/googleChart`,
@@ -1874,4 +1911,3 @@ export const SEARCHMENU = [
     ],
   },
 ];
-

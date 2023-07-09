@@ -14,7 +14,7 @@ const CommonModal = (props) => {
       </ModalBody>
       <ModalFooter>
         <Btn attrBtn={{ color: 'secondary', onClick: props.toggler }} >{Close}</Btn>
-        <Btn attrBtn={{ color: 'primary', onClick: props.toggler }}>{SaveChanges}</Btn>
+        {/* <Btn attrBtn={{ color: 'primary', onClick: props.toggler }}>{SaveChanges}</Btn> */}
       </ModalFooter>
     </Modal>
   );

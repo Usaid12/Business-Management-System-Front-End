@@ -7,8 +7,11 @@ export const Appointment = "Appointment";
 export const Notification = "notification";
 export const MarketValue = "Market Value";
 export const Chat = "Chat";
+export const ProductTable="ProductList"
+export const ParentId = "ParentId";
 
 export const NewProduct = "New Product";
+export const ProductThumbnail="Product Thumbnail"
 export const Location = "Location";
 export const RiskFactor = "Risk Factor";
 export const BestSeller = "Best Seller";
@@ -1215,6 +1218,9 @@ export const YY = "YY";
 
 //  tables
 export const BasicTable = "Basic Table With Border Bottom Color";
+export const BusinessTable = "Business List";
+export const CategoryListText = "Category List";
+export const SubCategoryList = "SubCategory List";
 export const InverseTable = "Inverse Table";
 export const InverseTablePrimaryBackground = "Inverse Table with Primary background";
 export const HoverableRows = "Hoverable Rows With Horizontal Border";

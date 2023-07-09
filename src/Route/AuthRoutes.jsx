@@ -26,10 +26,7 @@ import BusinessSignup from "../Auth/RegisterForms/BusinessSignup";
 import CustomerSignup from "../Auth/RegisterForms/CustomerSignup";
 export const authRoutes = [
   { path: `${process.env.PUBLIC_URL}/login`, Components: <Login /> },
-  {
-    path: `${process.env.PUBLIC_URL}/business-register`,
-    Components: <BusinessSignup />,
-  },
+
   {
     path: `${process.env.PUBLIC_URL}/customer-register`,
     Components: <CustomerSignup />,

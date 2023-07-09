@@ -5,7 +5,7 @@ import { authHeader, handleResponse } from "../Services/fack.backend";
 const PrivateRoute = () => {
   const login = JSON.parse(localStorage.getItem("login"))
   const [authenticated, setAuthenticated] = useState(false);
-  const jwt_token = localStorage.getItem("token");
+  const jwt_token = localStorage.getItem("access_token");
 
   useEffect(() => {
     const requestOptions = { method: "GET", headers: authHeader() };

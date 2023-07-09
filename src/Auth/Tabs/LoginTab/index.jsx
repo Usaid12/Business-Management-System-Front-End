@@ -2,47 +2,53 @@ import React from "react";
 import { Form, FormGroup, Input, Label } from "reactstrap";
 import { H4, H6, P } from "../../../AbstractElements";
 import axios from "axios";
-import { useNavigate } from "react-router";
 import {
   EmailAddress,
   Password,
   TextBackgroundUtilities,
 } from "../../../Constant";
 import { useFormik } from "formik";
-import { LoginSchema } from "../../../AuthScehma/LoginSchema";
+import {LoginSchema} from "../../../Schema/LoginSchema"
 import { Link } from "react-router-dom";
-
+import { useNavigate } from "react-router-dom";
 const initialValues = {
   email: "",
   password: "",
 };
+
 const LoginTab = () => {
-  const navigate = useNavigate()
+  const navigate = useNavigate();
   const { values, errors, touched, handleChange, handleBlur, handleSubmit } =
     useFormik({
       initialValues: initialValues,
       validationSchema: LoginSchema,
       onSubmit: () => {
-       handleLogin();
+        handleLogin();
       },
     });
-
-  const handleLogin = async () =>{
+  const handleLogin = async () => {
     const url = "http://localhost:5000/api/auth/login";
     try {
-      const data = await axios.post(url,{
-        email : values.email,
-        password : values.password
+      const data = await axios.post(url, {
+        email: values.email,
+        password: values.password,
       });
-      if (data.status === 201) {
-        localStorage.setItem("access_token",data.data.tokenst);
-        navigate('/tivo/dashboard/default')
+
+      if (data.status === 200) {
+        let accessToken;
+
+        if (data.data && data.data.data.tokens) {
+          accessToken = data.data.data.tokens.access_token;
+          console.log(accessToken);
+        }
+        localStorage.setItem("access_token", accessToken);
+
+        navigate("/tivo/dashboard/default");
       }
     } catch (error) {
       console.log(error);
     }
   };
-  
 
   return (
     <Form className="theme-form" onSubmit={handleSubmit}>
@@ -94,7 +100,6 @@ const LoginTab = () => {
             <button className=" btn btn-primary">Signup</button>
           </Link>
         </div>
-       
       </div>
     </Form>
   );

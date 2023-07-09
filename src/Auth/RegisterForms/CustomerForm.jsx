@@ -3,12 +3,12 @@ import axios from "axios";
 import { Form, FormGroup, Input, Label } from "reactstrap";
 import { H4, P } from "../../AbstractElements";
 import { useFormik } from "formik";
-import { CustomerSchema } from "../../AuthScehma/CustomerSchema";
+import { CustomerSchema } from "../../Schema/CustomerSchema"
 import { FirstName, Gender, LastName, phoneNumber } from "../../Constant";
 import { EmailAddress } from "../../Constant";
 import { Password } from "../../Constant";
 import { ConfirmPassword } from "../../Constant";
-import { useNavigate } from "react-router";
+import { useNavigate } from "react-router-dom";
 
 const initialValues = {
   firstName: "",
@@ -21,7 +21,8 @@ const initialValues = {
 };
 
 const CustomerForm = () => {
-  const navigate=useNavigate()
+  const navigate = useNavigate();
+
   const { values, errors, handleChange, handleBlur, handleSubmit, touched } =
     useFormik({
       initialValues: initialValues,
@@ -43,12 +44,13 @@ const CustomerForm = () => {
         role: "customer",
       });
       if (data.status === 201) {
-        localStorage.setItem("access_token",data.data.tokenst);
-        navigate('/tivo/dashboard/default')
-
+        let accessToken;
+        if (data.data && data.data.data.tokens) {
+          accessToken = data.data.data.tokens.access_token;
+        }
+        localStorage.setItem("access_token", accessToken);
+        navigate("/tivo/dashboard/default");
       }
-
-
     } catch (error) {
       console.log(error);
     }
