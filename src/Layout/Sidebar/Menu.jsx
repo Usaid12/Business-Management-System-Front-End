@@ -133,26 +133,20 @@ export const MENU = [
             title: "Add Product",
             type: "link",
           },
+          
           {
-            url: `${process.env.PUBLIC_URL}/ecommerce/payment-details`,
-            title: "Payment Detail",
+            url: `${process.env.PUBLIC_URL}/ecommerce/inventory`,
+            title: "Add To Inventory",
             type: "link",
           },
           {
-            url: `${process.env.PUBLIC_URL}/ecommerce/orderhistory`,
-            title: "Order History",
+            url: `${process.env.PUBLIC_URL}/ecommerce/inventory-list`,
+            title: "Inventory List",
             type: "link",
           },
-          {
-            url: `${process.env.PUBLIC_URL}/ecommerce/pricing`,
-            title: "Pricing",
-            type: "link",
-          },
-          {
-            url: `${process.env.PUBLIC_URL}/ecommerce/invoice`,
-            title: "Invoice",
-            type: "link",
-          },
+          
+         
+          
           {
             url: `${process.env.PUBLIC_URL}/ecommerce/cart`,
             title: "Cart",

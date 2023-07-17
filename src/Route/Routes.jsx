@@ -11,6 +11,7 @@ import ProductPage from "../Components/Eccommerce/ProductPage";
 import ProductListing from "../Components/ProductListing";
 import PaymentDetails from "../Components/Eccommerce/PaymentDetails";
 import OrderHistory from "../Components/Eccommerce/OrderHistory";
+import InventoryList from "../Components/Eccommerce/Inventory/InventoryList";
 import Invoice from "../Components/Eccommerce/Invoice";
 import WhishList from "../Components/Eccommerce/Wishlist";
 import MailInbox from "../Components/Email/Mail Inbox";
@@ -127,6 +128,7 @@ import CategoryList from "../CategoryList/index.jsx";
 import CategoryForm from "../Auth/RegisterForms/CategoryForm";
 import SubCategoryForm from "../Auth/RegisterForms/SubCategoryForm";
 import LeftformDesc from "../Components/Eccommerce/AddProduct/LeftformDesc";
+import InventoryForm from "../Components/Eccommerce/Inventory/InventoryForm";
 export const routes = [
   //dashboard
 
@@ -161,6 +163,14 @@ export const routes = [
   {
     path: `${process.env.PUBLIC_URL}/dashboard/business-list`,
     Component: <BusinessList />,
+  },
+  {
+    path: `${process.env.PUBLIC_URL}/ecommerce/inventory`,
+    Component: <InventoryForm />,
+  },
+  {
+    path: `${process.env.PUBLIC_URL}/ecommerce/inventory-list`,
+    Component: <InventoryList />,
   },
 
   //widgets

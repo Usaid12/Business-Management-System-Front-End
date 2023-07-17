@@ -1,10 +1,10 @@
 import * as Yup from "yup";
 
 export const RegisterSchema = Yup.object({
-  username: Yup.string()
+  name: Yup.string()
     .min(3)
     .max(20)
-    .required("Username is a required field"),
+    .required("A business must have a name"),
   firstName: Yup.string()
     .min(3)
     .max(20)

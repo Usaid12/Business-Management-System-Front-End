@@ -8,21 +8,21 @@ import {
   EmailAddress,
   Phone,
   PostalCode,
-  Username,
   FirstName,
   LastName,
   Gender,
+  Name,
 } from "../../Constant";
 import axios from "axios";
 
 const initialValues = {
-  username: "",
   userEmail: "",
   userPhone: "",
   country: "",
   city: "",
   address: "",
   postalCode: "",
+  name:"",
   businessEmail: "",
   businessPhone: "",
   firstName: "",
@@ -52,7 +52,7 @@ const BusinessForm = () => {
           phoneNumber: values.userPhone,
         },
         business: {
-          name: values.username,
+          name: values.name,
           email: values.businessEmail,
           contactNo: values.businessPhone,
           city: values.city,
@@ -164,16 +164,16 @@ const BusinessForm = () => {
         <div className="row">
           <div className="col">
             <FormGroup>
-              <Label className="col-form-label">{Username}</Label>
+              <Label className="col-form-label">{Name}</Label>
               <Input
                 className="form-control"
-                name="username"
-                value={values.username}
+                name="name"
+                value={values.name}
                 onChange={handleChange}
                 onBlur={handleBlur}
               />
-              {errors.username && touched.username ? (
-                <p className="form-error text-danger">{errors.username}</p>
+              {errors.name && touched.name ? (
+                <p className="form-error text-danger">{errors.name}</p>
               ) : null}
             </FormGroup>
           </div>

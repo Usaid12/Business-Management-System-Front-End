@@ -9,6 +9,9 @@ export const MarketValue = "Market Value";
 export const Chat = "Chat";
 export const ProductTable="ProductList"
 export const ParentId = "ParentId";
+export const arrivedAt = "arrivedAt";
+export const quantity = "quantity";
+export const InventoryTable = "InventoryTable";
 
 export const NewProduct = "New Product";
 export const ProductThumbnail="Product Thumbnail"
@@ -19,6 +22,7 @@ export const phoneNumber="phoneNumber"
 
 export const Earnings = "Earnings";
 export const Products = "Products";
+export const pricePerUnit = "pricePerUnit";
 export const Messages = "Messages";
 export const Settings = "Settings";
 export const NewUser = "New User";
